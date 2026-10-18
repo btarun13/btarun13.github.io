@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Tarun Naithani</title>
+<meta name="description" content="Tarun Naithani — Data Scientist working on graph neural networks, causal inference and ML for drug discovery and genomics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #eef2f5;
+    --paper-deep: #e2e8ee;
+    --ink: #13213a;
+    --ink-soft: #4a5872;
+    --rule: #c9d3dd;
+    --node: #1f7a8c;
+    --node-soft: rgba(31, 122, 140, 0.14);
+    --max: 68rem;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Manrope", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--node); text-decoration: none; }
+  a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--node); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+
+  /* ---------- hero ---------- */
+  header.hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    border-bottom: 1px solid var(--rule);
+  }
+  #graph {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    display: block;
+  }
+  .hero .wrap {
+    position: relative; width: 100%;
+    padding-bottom: 4rem; padding-top: 6rem;
+    display: grid;
+    grid-template-columns: 1fr minmax(14rem, 22rem);
+    gap: 3rem;
+    align-items: end;
+  }
+  .hero .portrait {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50% 50% 50% 8px;
+    border: 4px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--rule);
+    display: block;
+  }
+  @media (max-width: 720px) {
+    .hero .wrap { grid-template-columns: 1fr; gap: 2rem; padding-top: 4rem; }
+    .hero .portrait { width: 9rem; order: -1; }
+  }
+  .hero .handle { font-weight: 600; color: var(--ink); margin: 0 0 .75rem; }
+  .hero h1 {
+    font-size: clamp(2.6rem, 7vw, 5.6rem);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin: 0 0 1.5rem;
+    max-width: 14ch;
+  }
+  .hero p.lede {
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 44ch;
+    margin: 0 0 2rem;
+    color: var(--ink);
+  }
+  .links { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; margin: 0; padding: 0; list-style: none; font-weight: 600; }
+  .links a { color: var(--ink); }
+  .links a:hover { color: var(--node); }
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .6rem 1.15rem;
+    background: var(--node);
+    color: #fff !important;
+    border-radius: 999px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none !important;
+    transition: background .15s ease;
+  }
+  .btn:hover, .btn:focus-visible { background: #176273; }
+  .btn svg { width: 1em; height: 1em; }
+
+  /* ---------- sections ---------- */
+  section { padding: 4.5rem 0; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: 0; }
+  .grid { display: grid; grid-template-columns: 14rem 1fr; gap: 2rem; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; gap: 1rem; } }
+  h2 { font-size: 1.05rem; font-weight: 800; margin: 0; line-height: 1.4; }
+  section p { margin: 0 0 1rem; max-width: 62ch; }
+
+  /* projects: picture on the left, words on the right */
+  .projects { list-style: none; margin: 0; padding: 0; }
+  .projects li {
+    display: grid;
+    grid-template-columns: minmax(0, 18rem) 1fr;
+    gap: 1.5rem;
+    padding: 1.75rem 0;
+    border-top: 1px solid var(--rule);
+    align-items: start;
+  }
+  .projects li:first-child { border-top: 0; padding-top: 0; }
+  .projects .media {
+    display: block;
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 6px;
+    background: var(--paper-deep);
+    border: 1px solid var(--rule);
+  }
+  .projects .media img, .projects .media svg { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .projects .media svg { display: none; }
+  .projects .media.fallback img { display: none; }
+  .projects .media.fallback svg { display: block; }
+  .projects h3 { margin: 0 0 .35rem; font-size: 1.15rem; font-weight: 700; }
+  .projects h3 a { color: var(--ink); }
+  .projects h3 a:hover { color: var(--node); }
+  .projects .desc { margin: 0 0 .6rem; color: var(--ink-soft); max-width: 52ch; }
+  .projects .lang {
+    display: inline-block;
+    font-size: .85rem; font-weight: 600; color: var(--ink-soft);
+    padding: .15rem .6rem;
+    background: var(--node-soft);
+    border-radius: 999px;
+  }
+  @media (max-width: 640px) {
+    .projects li { grid-template-columns: 1fr; gap: .9rem; }
+  }
+
+  .areas { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; margin: 0; padding: 0; }
+  .areas li { padding: .35rem .8rem; border: 1px solid var(--rule); border-radius: 999px; font-weight: 500; font-size: .95rem; }
+
+  footer { padding: 2.5rem 0 3rem; color: var(--ink-soft); font-size: .9rem; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <canvas id="graph" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+    <p class="handle">Tarun Naithani · Data Scientist</p>
+    <h1>Networks, Biology, molecules and the problems that connect them.</h1>
+    <p class="lede">I work on graph neural networks, deep learning and ML workflows for scientific problems — from epigenetic models to graph-based drug discovery.</p>
+    <ul class="links">
+      <li><a href="https://github.com/btarun13">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/tarun-naithani-98719a123">LinkedIn</a></li>
+      <li><a href="https://scholar.google.com/citations?user=3-eYb84AAAAJ">Google Scholar</a></li>
+      <li><a class="btn" href="assets/Tarun_Naithani_CV.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>Resume</a></li>
+    </ul>
+    </div>
+    <img class="portrait" src="assets/tarun.jpg" alt="Tarun Naithani, with an alpaca">
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="about">
+    <div class="grid">
+      <h2>About</h2>
+      <div>
+        <p>I turn complex biological and chemical data into things you can act on. Most of my work sits where networks, AI, software design and mathematics overlap: building GNN-powered epigenetic models, writing open-source packages for graph-based drug repurposing, and setting up retrieval pipelines so domain experts can query the literature in plain language.</p>
+        <p>Recently: a RAG pipeline on Pinecone over drug literature, a drug–disease recommender built on graph embeddings, and visibility graphs for turning time series into networks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="grid">
+      <h2>Selected projects</h2>
+      <ul class="projects">
+        <li>
+          <a class="media" href="https://github.com/btarun13/GDC-Mutant-Peptide-Explorer" tabindex="-1" aria-hidden="true"><img src="https://github.com/btarun13/GDC-Mutant-Peptide-Explorer/raw/main/docs/mutant-vs-wildtype.png" alt="Mutant versus wild-type predicted binding for TCGA pancreatic adenocarcinoma samples" loading="lazy" onerror="this.parentElement.classList.add('fallback')"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="205" cy="78" r="4" fill="rgba(31,122,140,.35)"/><circle cx="242" cy="206" r="4" fill="rgba(31,122,140,.35)"/><circle cx="64" cy="58" r="4" fill="rgba(31,122,140,.35)"/><circle cx="314" cy="64" r="4" fill="rgba(31,122,140,.35)"/><circle cx="227" cy="189" r="4" fill="rgba(31,122,140,.35)"/><circle cx="69" cy="169" r="4" fill="rgba(31,122,140,.35)"/><circle cx="149" cy="49" r="4" fill="rgba(31,122,140,.35)"/><circle cx="84" cy="151" r="4" fill="rgba(31,122,140,.35)"/><circle cx="254" cy="57" r="4" fill="rgba(31,122,140,.35)"/><circle cx="163" cy="63" r="4" fill="rgba(31,122,140,.35)"/><circle cx="322" cy="148" r="4" fill="rgba(31,122,140,.35)"/><circle cx="70" cy="251" r="4" fill="rgba(31,122,140,.35)"/><circle cx="329" cy="71" r="4" fill="rgba(31,122,140,.35)"/><circle cx="154" cy="201" r="4" fill="rgba(31,122,140,.35)"/><circle cx="338" cy="55" r="4" fill="rgba(31,122,140,.35)"/><circle cx="335" cy="189" r="4" fill="rgba(31,122,140,.35)"/><circle cx="243" cy="52" r="4" fill="rgba(31,122,140,.35)"/><circle cx="153" cy="51" r="4" fill="rgba(31,122,140,.35)"/><circle cx="325" cy="259" r="4" fill="rgba(31,122,140,.35)"/><circle cx="108" cy="114" r="4" fill="rgba(31,122,140,.35)"/><circle cx="254" cy="76" r="4" fill="rgba(31,122,140,.35)"/><circle cx="316" cy="70" r="4" fill="rgba(31,122,140,.35)"/><circle cx="332" cy="118" r="4" fill="rgba(31,122,140,.35)"/><circle cx="326" cy="248" r="4" fill="rgba(31,122,140,.35)"/><circle cx="132" cy="66" r="4" fill="rgba(31,122,140,.35)"/><circle cx="337" cy="186" r="4" fill="rgba(31,122,140,.35)"/><circle cx="136" cy="135" r="4" fill="rgba(31,122,140,.35)"/><circle cx="89" cy="180" r="4" fill="rgba(31,122,140,.35)"/><circle cx="72" cy="184" r="4" fill="rgba(31,122,140,.35)"/><circle cx="70" cy="198" r="4" fill="rgba(31,122,140,.35)"/><circle cx="145" cy="167" r="4" fill="rgba(31,122,140,.35)"/><circle cx="312" cy="149" r="4" fill="rgba(31,122,140,.35)"/><circle cx="200" cy="159" r="4" fill="rgba(31,122,140,.35)"/><circle cx="339" cy="156" r="4" fill="rgba(31,122,140,.35)"/><circle cx="225" cy="116" r="4" fill="rgba(31,122,140,.35)"/><circle cx="167" cy="243" r="4" fill="rgba(31,122,140,.35)"/><circle cx="132" cy="218" r="4" fill="rgba(31,122,140,.35)"/><circle cx="164" cy="60" r="4" fill="rgba(31,122,140,.35)"/><circle cx="334" cy="116" r="4" fill="rgba(31,122,140,.35)"/><circle cx="308" cy="166" r="4" fill="rgba(31,122,140,.35)"/><circle cx="210" cy="150" r="9" fill="#1f7a8c"/><circle cx="210" cy="150" r="60" fill="none" stroke="#1f7a8c" stroke-width="1.5" stroke-dasharray="5 5"/></svg></a>
+          <div>
+            <h3><a href="https://github.com/btarun13/GDC-Mutant-Peptide-Explorer">GDC-Mutant-Peptide-Explorer</a></h3>
+            <p class="desc">For a given cancer, which mutant antigens would make the best vaccine targets? A Streamlit app that pulls open-access somatic mutation data from the NCI GDC, rebuilds mutant and wild-type peptides, and predicts HLA class I binding with MHCflurry, with a funnel, recurrence view and full provenance on every export.</p>
+            <span class="lang">Python · Streamlit</span>
+          </div>
+        </li>
+        <li>
+          <a class="media" href="https://github.com/btarun13/visibility_graph" tabindex="-1" aria-hidden="true"><img src="assets/visibility_graph.gif" alt="visibility_graph demo" loading="lazy" onerror="this.parentElement.classList.add('fallback')"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M60,120 Q100.0,10 140,70" fill="none" stroke="rgba(31,122,140,.35)" stroke-width="1.5"/><path d="M140,70 Q180.0,10 220,110" fill="none" stroke="rgba(31,122,140,.35)" stroke-width="1.5"/><path d="M140,70 Q220.0,10 300,90" fill="none" stroke="rgba(31,122,140,.35)" stroke-width="1.5"/><path d="M220,110 Q260.0,30 300,90" fill="none" stroke="rgba(31,122,140,.35)" stroke-width="1.5"/><path d="M300,90 Q320.0,30 340,150" fill="none" stroke="rgba(31,122,140,.35)" stroke-width="1.5"/><path d="M20,220 Q40.0,60 60,120" fill="none" stroke="rgba(31,122,140,.35)" stroke-width="1.5"/><path d="M100,180 Q120.0,10 140,70" fill="none" stroke="rgba(31,122,140,.35)" stroke-width="1.5"/><path d="M180,160 Q200.0,50 220,110" fill="none" stroke="rgba(31,122,140,.35)" stroke-width="1.5"/><path d="M260,200 Q280.0,30 300,90" fill="none" stroke="rgba(31,122,140,.35)" stroke-width="1.5"/><path d="M340,150 Q360.0,90 380,230" fill="none" stroke="rgba(31,122,140,.35)" stroke-width="1.5"/><polyline points="20,220 60,120 100,180 140,70 180,160 220,110 260,200 300,90 340,150 380,230" fill="none" stroke="#1f7a8c" stroke-width="2"/><circle cx="20" cy="220" r="5" fill="#1f7a8c"/><circle cx="60" cy="120" r="5" fill="#1f7a8c"/><circle cx="100" cy="180" r="5" fill="#1f7a8c"/><circle cx="140" cy="70" r="5" fill="#1f7a8c"/><circle cx="180" cy="160" r="5" fill="#1f7a8c"/><circle cx="220" cy="110" r="5" fill="#1f7a8c"/><circle cx="260" cy="200" r="5" fill="#1f7a8c"/><circle cx="300" cy="90" r="5" fill="#1f7a8c"/><circle cx="340" cy="150" r="5" fill="#1f7a8c"/><circle cx="380" cy="230" r="5" fill="#1f7a8c"/></svg></a>
+          <div>
+            <h3><a href="https://github.com/btarun13/visibility_graph">visibility_graph</a></h3>
+            <p class="desc">Builds graph embeddings for time-series data by converting sequences into visibility graphs, so standard network methods apply to signals.</p>
+            <span class="lang">Jupyter · Python</span>
+          </div>
+        </li>
+        <li>
+          <a class="media" href="https://github.com/btarun13/drug_repurposing" tabindex="-1" aria-hidden="true"><img src="assets/drug_repurposing.gif" alt="drug_repurposing demo" loading="lazy" onerror="this.parentElement.classList.add('fallback')"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line x1="80" y1="60" x2="320" y2="80" stroke="rgba(31,122,140,.35)" stroke-width="2"/><line x1="80" y1="60" x2="320" y2="150" stroke="rgba(31,122,140,.35)" stroke-width="2"/><line x1="80" y1="120" x2="320" y2="150" stroke="rgba(31,122,140,.35)" stroke-width="2"/><line x1="80" y1="180" x2="320" y2="80" stroke="rgba(31,122,140,.35)" stroke-width="2"/><line x1="80" y1="180" x2="320" y2="220" stroke="rgba(31,122,140,.35)" stroke-width="2"/><line x1="80" y1="240" x2="320" y2="220" stroke="rgba(31,122,140,.35)" stroke-width="2"/><line x1="80" y1="120" x2="320" y2="220" stroke="rgba(31,122,140,.35)" stroke-width="2"/><circle cx="80" cy="60" r="9" fill="#1f7a8c"/><circle cx="80" cy="120" r="9" fill="#1f7a8c"/><circle cx="80" cy="180" r="9" fill="#1f7a8c"/><circle cx="80" cy="240" r="9" fill="#1f7a8c"/><rect x="311" y="71" width="18" height="18" rx="3" fill="#1f7a8c"/><rect x="311" y="141" width="18" height="18" rx="3" fill="#1f7a8c"/><rect x="311" y="211" width="18" height="18" rx="3" fill="#1f7a8c"/></svg></a>
+          <div>
+            <h3><a href="https://github.com/btarun13/drug_repurposing">drug_repurposing</a></h3>
+            <p class="desc">A pipeline that learns graph embeddings over a biomedical knowledge graph and uses them to predict candidate drug–disease associations.</p>
+            <span class="lang">Python</span>
+          </div>
+        </li>
+        <li>
+          <a class="media" href="https://github.com/btarun13/Regulatr-app" tabindex="-1" aria-hidden="true"><img src="assets/regulatr-app.gif" alt="Regulatr-app demo" loading="lazy" onerror="this.parentElement.classList.add('fallback')"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line x1="30" y1="70" x2="370" y2="70" stroke="rgba(31,122,140,.35)" stroke-width="2"/><rect x="237" y="62" width="34" height="16" rx="2" fill="#1f7a8c" opacity="0.5"/><rect x="255" y="62" width="11" height="16" rx="2" fill="#1f7a8c" opacity="0.5"/><rect x="172" y="62" width="40" height="16" rx="2" fill="#1f7a8c" opacity="0.5"/><rect x="301" y="62" width="25" height="16" rx="2" fill="#1f7a8c" opacity="0.5"/><rect x="247" y="62" width="39" height="16" rx="2" fill="#1f7a8c" opacity="0.5"/><line x1="30" y1="120" x2="370" y2="120" stroke="rgba(31,122,140,.35)" stroke-width="2"/><rect x="108" y="112" width="28" height="16" rx="2" fill="#1f7a8c" opacity="0.6"/><rect x="72" y="112" width="18" height="16" rx="2" fill="#1f7a8c" opacity="0.6"/><rect x="100" y="112" width="25" height="16" rx="2" fill="#1f7a8c" opacity="0.6"/><rect x="270" y="112" width="25" height="16" rx="2" fill="#1f7a8c" opacity="0.6"/><rect x="234" y="112" width="35" height="16" rx="2" fill="#1f7a8c" opacity="0.6"/><line x1="30" y1="170" x2="370" y2="170" stroke="rgba(31,122,140,.35)" stroke-width="2"/><rect x="68" y="162" width="12" height="16" rx="2" fill="#1f7a8c" opacity="0.7"/><rect x="83" y="162" width="21" height="16" rx="2" fill="#1f7a8c" opacity="0.7"/><rect x="126" y="162" width="33" height="16" rx="2" fill="#1f7a8c" opacity="0.7"/><rect x="197" y="162" width="18" height="16" rx="2" fill="#1f7a8c" opacity="0.7"/><rect x="148" y="162" width="29" height="16" rx="2" fill="#1f7a8c" opacity="0.7"/><line x1="30" y1="220" x2="370" y2="220" stroke="rgba(31,122,140,.35)" stroke-width="2"/><rect x="161" y="212" width="28" height="16" rx="2" fill="#1f7a8c" opacity="0.8"/><rect x="318" y="212" width="14" height="16" rx="2" fill="#1f7a8c" opacity="0.8"/><rect x="229" y="212" width="39" height="16" rx="2" fill="#1f7a8c" opacity="0.8"/><rect x="282" y="212" width="30" height="16" rx="2" fill="#1f7a8c" opacity="0.8"/><rect x="73" y="212" width="29" height="16" rx="2" fill="#1f7a8c" opacity="0.8"/><line x1="200" y1="40" x2="200" y2="250" stroke="#1f7a8c" stroke-width="2" stroke-dasharray="4 4"/></svg></a>
+          <div>
+            <h3><a href="https://github.com/btarun13/Regulatr-app">Regulatr-app</a></h3>
+            <p class="desc">Hackathon submission: a web app that links ENCODE experiments by accession ID so you can explore the regulatory context of non-coding variants.</p>
+            <span class="lang">Python</span>
+          </div>
+        </li>
+        <li>
+          <a class="media" href="https://github.com/btarun13/Search_Vector_DB_RAG" tabindex="-1" aria-hidden="true"><img src="assets/search_vector_db_rag.gif" alt="Search_Vector_DB_RAG demo" loading="lazy" onerror="this.parentElement.classList.add('fallback')"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="205" cy="78" r="4" fill="rgba(31,122,140,.35)"/><circle cx="242" cy="206" r="4" fill="rgba(31,122,140,.35)"/><circle cx="64" cy="58" r="4" fill="rgba(31,122,140,.35)"/><circle cx="314" cy="64" r="4" fill="rgba(31,122,140,.35)"/><circle cx="227" cy="189" r="4" fill="rgba(31,122,140,.35)"/><circle cx="69" cy="169" r="4" fill="rgba(31,122,140,.35)"/><circle cx="149" cy="49" r="4" fill="rgba(31,122,140,.35)"/><circle cx="84" cy="151" r="4" fill="rgba(31,122,140,.35)"/><circle cx="254" cy="57" r="4" fill="rgba(31,122,140,.35)"/><circle cx="163" cy="63" r="4" fill="rgba(31,122,140,.35)"/><circle cx="322" cy="148" r="4" fill="rgba(31,122,140,.35)"/><circle cx="70" cy="251" r="4" fill="rgba(31,122,140,.35)"/><circle cx="329" cy="71" r="4" fill="rgba(31,122,140,.35)"/><circle cx="154" cy="201" r="4" fill="rgba(31,122,140,.35)"/><circle cx="338" cy="55" r="4" fill="rgba(31,122,140,.35)"/><circle cx="335" cy="189" r="4" fill="rgba(31,122,140,.35)"/><circle cx="243" cy="52" r="4" fill="rgba(31,122,140,.35)"/><circle cx="153" cy="51" r="4" fill="rgba(31,122,140,.35)"/><circle cx="325" cy="259" r="4" fill="rgba(31,122,140,.35)"/><circle cx="108" cy="114" r="4" fill="rgba(31,122,140,.35)"/><circle cx="254" cy="76" r="4" fill="rgba(31,122,140,.35)"/><circle cx="316" cy="70" r="4" fill="rgba(31,122,140,.35)"/><circle cx="332" cy="118" r="4" fill="rgba(31,122,140,.35)"/><circle cx="326" cy="248" r="4" fill="rgba(31,122,140,.35)"/><circle cx="132" cy="66" r="4" fill="rgba(31,122,140,.35)"/><circle cx="337" cy="186" r="4" fill="rgba(31,122,140,.35)"/><circle cx="136" cy="135" r="4" fill="rgba(31,122,140,.35)"/><circle cx="89" cy="180" r="4" fill="rgba(31,122,140,.35)"/><circle cx="72" cy="184" r="4" fill="rgba(31,122,140,.35)"/><circle cx="70" cy="198" r="4" fill="rgba(31,122,140,.35)"/><circle cx="145" cy="167" r="4" fill="rgba(31,122,140,.35)"/><circle cx="312" cy="149" r="4" fill="rgba(31,122,140,.35)"/><circle cx="200" cy="159" r="4" fill="rgba(31,122,140,.35)"/><circle cx="339" cy="156" r="4" fill="rgba(31,122,140,.35)"/><circle cx="225" cy="116" r="4" fill="rgba(31,122,140,.35)"/><circle cx="167" cy="243" r="4" fill="rgba(31,122,140,.35)"/><circle cx="132" cy="218" r="4" fill="rgba(31,122,140,.35)"/><circle cx="164" cy="60" r="4" fill="rgba(31,122,140,.35)"/><circle cx="334" cy="116" r="4" fill="rgba(31,122,140,.35)"/><circle cx="308" cy="166" r="4" fill="rgba(31,122,140,.35)"/><circle cx="210" cy="150" r="9" fill="#1f7a8c"/><circle cx="210" cy="150" r="60" fill="none" stroke="#1f7a8c" stroke-width="1.5" stroke-dasharray="5 5"/></svg></a>
+          <div>
+            <h3><a href="https://github.com/btarun13/Search_Vector_DB_RAG">Search_Vector_DB_RAG</a></h3>
+            <p class="desc">Searches and downloads papers for specific drugs (from SMILES), indexes them into a Pinecone vector database, and exposes a RAG command-line interface.</p>
+            <span class="lang">Jupyter · Python</span>
+          </div>
+        </li>
+        <li>
+          <a class="media" href="https://github.com/btarun13/redpanda" tabindex="-1" aria-hidden="true"><img src="assets/redpanda.gif" alt="redpanda demo" loading="lazy" onerror="this.parentElement.classList.add('fallback')"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="150,90 190,110 190,160 150,180 110,160 110,110" fill="none" stroke="#1f7a8c" stroke-width="3"/><polygon points="230,150 270,170 270,220 230,240 190,220 190,170" fill="none" stroke="#1f7a8c" stroke-width="3"/><line x1="270" y1="170" x2="320" y2="140" stroke="#1f7a8c" stroke-width="3"/><circle cx="150" cy="90" r="6" fill="#1f7a8c"/><circle cx="190" cy="110" r="6" fill="#1f7a8c"/><circle cx="190" cy="160" r="6" fill="#1f7a8c"/><circle cx="150" cy="180" r="6" fill="#1f7a8c"/><circle cx="110" cy="160" r="6" fill="#1f7a8c"/><circle cx="110" cy="110" r="6" fill="#1f7a8c"/><circle cx="230" cy="150" r="6" fill="#1f7a8c"/><circle cx="270" cy="170" r="6" fill="#1f7a8c"/><circle cx="270" cy="220" r="6" fill="#1f7a8c"/><circle cx="230" cy="240" r="6" fill="#1f7a8c"/><circle cx="190" cy="220" r="6" fill="#1f7a8c"/></svg></a>
+          <div>
+            <h3><a href="https://github.com/btarun13/redpanda">redpanda</a></h3>
+            <p class="desc">Molecular classifier that predicts the clinical activity of drug candidates from their structure.</p>
+            <span class="lang">Jupyter · Python</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="areas">
+    <div class="grid">
+      <h2>Working on</h2>
+      <ul class="areas">
+        <li>Graph neural networks</li>
+        <li>Causal inference</li>
+        <li>Drug discovery</li>
+        <li>Epigenomics</li>
+        <li>Retrieval-augmented generation</li>
+        <li>Time-series as graphs</li>
+        <li>Open-source scientific tooling</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="grid">
+      <h2>Get in touch</h2>
+      <p>The quickest route is <a href="https://www.linkedin.com/in/tarun-naithani-98719a123">LinkedIn</a>. For papers, see <a href="https://scholar.google.com/citations?user=3-eYb84AAAAJ">Google Scholar</a>; for code, <a href="https://github.com/btarun13">GitHub</a>. My <a href="assets/Tarun_Naithani_CV.pdf" target="_blank" rel="noopener">resume</a> is available as a PDF.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Tarun Naithani</span>
+    <span>Built with plain HTML, hosted on GitHub Pages</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const canvas = document.getElementById('graph');
+  const ctx = canvas.getContext('2d');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W, H, nodes = [], dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const LINK = 150;
+
+  function resize() {
+    const r = canvas.parentElement.getBoundingClientRect();
+    W = r.width; H = r.height;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const count = Math.round(Math.min(90, Math.max(35, (W * H) / 14000)));
+    nodes = Array.from({ length: count }, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25,
+      r: 1.6 + Math.random() * 2.2
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    // edges
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const d = Math.hypot(dx, dy);
+        if (d < LINK) {
+          ctx.strokeStyle = 'rgba(31,122,140,' + (0.28 * (1 - d / LINK)).toFixed(3) + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+    }
+    // nodes
+    ctx.fillStyle = '#1f7a8c';
+    for (const n of nodes) {
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
+    }
+    // fade the lower part so the headline stays readable
+    const bg = getComputedStyle(document.body).backgroundColor.match(/\d+/g) || [238,242,245];
+    const rgb = bg.slice(0,3).join(',');
+    const g = ctx.createLinearGradient(0, H * 0.35, 0, H);
+    g.addColorStop(0, 'rgba(' + rgb + ',0)');
+    g.addColorStop(1, 'rgba(' + rgb + ',0.96)');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  }
+
+  function step() {
+    for (const n of nodes) {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0 || n.x > W) n.vx *= -1;
+      if (n.y < 0 || n.y > H) n.vy *= -1;
+    }
+    draw();
+    requestAnimationFrame(step);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  if (reduce) draw(); else step();
+})();
+</script>
+</body>
+</html>
