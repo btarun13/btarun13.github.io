@@ -13,6 +13,7 @@ Personal portfolio for Tarun Naithani. Plain HTML/CSS/JS, no build step.
 
 Everything is in `index.html`:
 
+- CV: replace `assets/Tarun_Naithani_CV.pdf` with a newer version of the same name.
 - Profile photo: replace `assets/tarun.jpg` (square works best).
 - Hero text and links: the `<header class="hero">` block.
 - Projects: the `<ul class="projects">` list — each `<li>` is one project.
